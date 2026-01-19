@@ -2,44 +2,42 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(ResultAnalyzer.class)
 class MainTest {
 
     @Test
     public void testShouldWakeUp(){
-        assertEquals(Main.shouldWakeUp(true, 1), true);
-        assertEquals(Main.shouldWakeUp(false, 2), false);
-        assertEquals(Main.shouldWakeUp(true, 8), false);
-        assertEquals(Main.shouldWakeUp(true, -1), false);
+        assertEquals(true, Main.shouldWakeUp(true, 1));
+        assertEquals(false, Main.shouldWakeUp(false, 2));
+        assertEquals(false, Main.shouldWakeUp(true, 8));
+        assertEquals(false, Main.shouldWakeUp(true, -1));
     }
 
     @Test
     public void hasTeenTest(){
-        assertEquals(Main.hasTeen(9, 99, 19), true);
-        assertEquals(Main.hasTeen(23, 15, 42), true);
-        assertEquals(Main.hasTeen(22, 23, 34), false);
+        assertEquals(true, Main.hasTeen(9, 99, 19));
+        assertEquals(true, Main.hasTeen(23, 15, 42));
+        assertEquals(false, Main.hasTeen(22, 23, 34));
     }
 
     @Test
     public void testIsCatPlaying(){
-        assertEquals(Main.isCatPlaying(true, 10), false);
-        assertEquals(Main.isCatPlaying(false, 36), false);
-        assertEquals(Main.isCatPlaying(false, 35), true);
+        assertEquals(false, Main.isCatPlaying(true, 10));
+        assertEquals(false, Main.isCatPlaying(false, 36));
+        assertEquals(true, Main.isCatPlaying(false, 35));
     }
 
     @Test
     public void testArea(){
-        assertEquals(Main.area(5.0, 4.0), 20);
-        assertEquals(Main.area(-1.0, 4.0), -1);
+        assertEquals(20.0, Main.area(5.0, 4.0));
+        assertEquals(-1.0, Main.area(-1.0, 4.0));
     }
 
     @Test
     public void testSingleArea(){
-        assertEquals(Main.area(5.0), 78.53981633974483);
-        assertEquals(Main.area(-1.0), -1);
+        assertEquals(78.53981633974483, Main.area(5.0));
+        assertEquals(-1.0, Main.area(-1));
     }
-
 }
