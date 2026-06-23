@@ -1,79 +1,229 @@
-# Introduction To Java :)
+# Java Control Flow Methods
 
-### Proje Kurulumu
+A Java project focused on control flow, conditional statements, boolean logic, method design, method overloading, input validation, and basic mathematical calculations.
 
-Projeyi öncelikle forklayın ve clone edin.
-Daha sonra projeyi IntellijIDEA kullanarak açınız. README.md dosyasını dikkatlı bir şekilde okuyarak istenenleri yapmaya çalışın.
-Proje sayımız ilerledikçe proje yönetimimizi kolaylaştırmak adına projelerimizi belli klasör kalıplarında saklamak işimizi kolaylaştırmak adına iyi bir alışkanlıktır.
-Örnek bir Lokasyon: Workintech/Sprint_1/Etud.
+The project includes several beginner-friendly Java method challenges that demonstrate how to use conditions, return values, parameter validation, and overloaded methods.
 
-### Hedeflerimiz:
+## Overview
 
-### Havlayan Köpeğimiz
+This project demonstrates core Java control flow concepts through small, focused method implementations.
 
-* Havlamayı seven bir köpeğimiz var. Eğer köpeğimiz geceleri havlarsa uyanacağız ama gündüzleri havlarsa tepki vermeyeceğimiz bir metod yazmaya çalışacağız.
-* ```shouldWakeUp``` isimli metodumuz 2 tane parametre almalı. İlk parametre ```boolean``` olmalı ve köpeğin şu an havlayıp havlamadığını tutmalı.
-* İkinci parametremiz ```int``` değer almalı. 0-23 arasında değer alabilir. Köpeğimiz akşam 8 ile sabah 8 arasında havlıyorsa metod ```true``` değer dönmeli.
-* Diğer şartlar altında metodumuz ```false``` değer dönmeli.
-* İkinci parametre 0'dan küçükse ya da 23'den büyükse metodumuz yine ```false``` değer dönmeli.
+The main goal is to practice writing clean Java methods that evaluate conditions, validate inputs, handle edge cases, and return correct results based on different scenarios.
 
+The project includes challenges such as:
 
-shouldWakeUp (true, 1); => true dönmeli(Gece 1'de köpeğimiz havlıyor)
+* Dog barking wake-up logic
+* Teen age detection
+* Cat playing temperature logic
+* Rectangle area calculation
+* Circle area calculation with method overloading
 
-shouldWakeUp (false, 2); => false dönmeli.(köpek havlamıyor.)
+## Tech Stack
 
-shouldWakeUp (true, 8); => false dönmeli.(8'den sonra ise tepki vermeliyiz.)
+* Java
+* Maven
+* Control flow
+* Conditional statements
+* Boolean logic
+* Method overloading
+* Mathematical calculations
+* Input validation
 
-shouldWakeUp (true, -1); => false dönmeli(-1 geçersiz değer)
+## Core Concepts
 
+* `if` / `else` statements
+* Boolean conditions
+* Method return values
+* Parameter validation
+* Edge case handling
+* Method overloading
+* Basic arithmetic operations
+* `Math.PI` usage
+* Clean method-based problem solving
 
-### Yaş Tespiti
+## Challenge 1: Barking Dog
 
-* ```hasTeen``` isimli 3 tane parametre alan bir metod yazmak istiyoruz.
-* 3 parametreden herhangi biri eğer 13-19 arasındaysa metod ```true``` değer dönmeli
-* Diğer şartlarda ```false``` değer dönmeli.
+The `shouldWakeUp()` method determines whether a person should wake up based on whether a dog is barking and the current hour.
 
-hasTeen(9, 99, 19); => true dönmeli.(19 değerinden dolayı)
+Method:
 
-hasTeen(23, 15, 42); => true dönmeli.(15 değerinden dolayı)
+```java
+shouldWakeUp(boolean barking, int hourOfDay)
+```
 
-hasTeen(22, 23, 34); => false dönemli(Hiçbir değer 13-19 arasında değil.)
+Rules:
 
+* Returns `true` if the dog is barking between 20:00 and 08:00
+* Returns `false` if the dog is not barking
+* Returns `false` if the hour is invalid
+* Valid hour range is `0` to `23`
 
+Example behavior:
 
-### Oyuncu Kedi
+```java
+shouldWakeUp(true, 1);   // true
+shouldWakeUp(false, 2);  // false
+shouldWakeUp(true, 8);   // false
+shouldWakeUp(true, -1);  // false
+```
 
-* Oyun oynamayı çok seven bir kedimiz var. Kedimizin oyun oynadığı zamanları tespit etmek için bir metod yazacağız.
-* Kedimiz sıcaklık 25 ile 35 arasındaysa oyun oynuyor olucak. Eğer mevsim yaz değilse. Mevsim yaz ise üst limit 35 yerine 45 olmalı.
-* ```isCatPlaying``` isimli 2 tane parametre alan bir metod yazmak istiyoruz. Eğer kedi oyun oynuyorsa metodumuz ```true``` değer dönecek. Oyun oynamıyorsa ```false``` değer dönecek.
-* İlk parametre ```boolean``` değer tutmalı ve mevsimin yaz olup olmadığını kontrol etmeli
-* İkinci parametre ```int``` olamlı ve sıcaklık değerini tutmalı.
+## Challenge 2: Teen Number Checker
 
+The `hasTeen()` method checks whether at least one of three given ages is between 13 and 19.
 
-isCatPlaying(true, 10); => false dönmeli(sıcaklık 25-45 arasında olmalıydı)
+Method:
 
-isCatPlaying(false, 36); => false dönmeli(sıcaklık 25-35 arasında olmalıydı)
+```java
+hasTeen(int firstAge, int secondAge, int thirdAge)
+```
 
-isCatPlaying(false, 35); => true dönmeli(sıcaklık 25-35 arasında.)
+Rules:
 
+* Returns `true` if any parameter is between `13` and `19`
+* Returns `false` if none of the parameters are teen ages
 
-### Alan Hesaplama
+Example behavior:
 
-* Dikdörtgenin alanını hesaplamak için bir metod yazınız. Metodun ismi ```area``` olmalı.
-* İki tane ```double``` parametre almalı ve bu parametreleri kullanıcıdan almalı.
-* Eğer parametrelerden herhangi biri negatif değer alırsa, alan negatif olamayacağından metod ```-1``` değer dönerek yanlış bir işlem yapıldığını belirtmeli.
-* Metod iki değeri birbiriyle çarpmalı ve değeri ```return``` etmeli.
+```java
+hasTeen(9, 99, 19);   // true
+hasTeen(23, 15, 42);  // true
+hasTeen(22, 23, 34);  // false
+```
 
-area(5.0, 4.0); => 20.0 değerini dönmeli.
+## Challenge 3: Playing Cat
 
-area(-1.0, 4.0); => -1 değerini dönmeli.
+The `isCatPlaying()` method checks whether a cat is playing based on the temperature and whether it is summer.
 
-* Bir tane daha ```area``` isimli bir metod tanımla. Amacımız dairenin alanını hesaplamak.
-* bu sefer tek bir ```double``` parametresi almalı. İsmi radius olabilir. Bu parametrede kullanıcıdan alınmalı.
-* parametre negatif bir dğer alırsa metod yine -1 dönmeli.
-* Diğer şartlarda metod ```radius*radius*Math.PI``` değerini dönmeli
-* Math.PI kullandığında ```java.lang``` paketinde olduğu otomatik `import` ediliyor, ekstra bir şey yapmana gerek yok. 
+Method:
 
-area(5.0); => 78.53975 değerini dönmeli
+```java
+isCatPlaying(boolean summer, int temperature)
+```
 
-area(-1); => -1 değerini dönmeli.
+Rules:
+
+* If it is not summer, the cat plays between `25` and `35` degrees
+* If it is summer, the upper limit becomes `45` degrees
+* Returns `true` only if the temperature is inside the valid range
+
+Example behavior:
+
+```java
+isCatPlaying(true, 10);   // false
+isCatPlaying(false, 36);  // false
+isCatPlaying(false, 35);  // true
+```
+
+## Challenge 4: Area Calculator
+
+The `area()` method is overloaded to calculate both rectangle area and circle area.
+
+### Rectangle Area
+
+Method:
+
+```java
+area(double width, double height)
+```
+
+Rules:
+
+* Returns `width * height`
+* Returns `-1` if width or height is negative
+
+Example behavior:
+
+```java
+area(5.0, 4.0);   // 20.0
+area(-1.0, 4.0);  // -1
+```
+
+### Circle Area
+
+Method:
+
+```java
+area(double radius)
+```
+
+Rules:
+
+* Returns `radius * radius * Math.PI`
+* Returns `-1` if radius is negative
+
+Example behavior:
+
+```java
+area(5.0);  // 78.53981633974483
+area(-1);   // -1
+```
+
+## Features
+
+* Dog barking time validation
+* Teen age range checking
+* Temperature-based condition checking
+* Rectangle area calculation
+* Circle area calculation
+* Method overloading practice
+* Invalid input handling
+* Boolean return logic
+* Clean and simple Java method structure
+* Pure Java problem-solving examples
+
+## Project Structure
+
+```text
+src/
+ └── main/
+     └── java/
+         └── org/example/
+             ├── Main.java
+             └── ...
+```
+
+## What This Project Demonstrates
+
+* Writing conditional logic in Java
+* Returning boolean results from methods
+* Validating method parameters
+* Handling invalid values safely
+* Using method overloading for related calculations
+* Applying mathematical formulas in Java
+* Solving small algorithmic problems with clean methods
+* Building strong Java control flow fundamentals
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* Java 17+
+* Maven
+* IntelliJ IDEA or another Java IDE
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/emreyildirim-33/Java-Control-Flow-Methods.git
+cd Java-Control-Flow-Methods
+```
+
+Run the project from your IDE or with Maven:
+
+```bash
+mvn test
+```
+
+## Notes
+
+This project focuses on Java control flow, conditional statements, boolean logic, method overloading, input validation, and basic mathematical calculations.
+
+The main purpose is to demonstrate how small Java methods can solve focused logic problems with clear conditions and predictable return values.
+
+## Repository
+
+GitHub: https://github.com/emreyildirim-33/Java-Control-Flow-Methods
